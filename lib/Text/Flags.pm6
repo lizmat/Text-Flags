@@ -3,8 +3,8 @@ module Text::Flags:ver<0.0.1>:auth<cpan:ELIZABETH> {
     # Because we have auto-combining on regional indicator codepoints,
     # we need to separate them to get the codes by themselves, so we
     # put a space inbetween each of them to create consistent mapping.
-    my constant $alpha = ("a"       .. "z"      ).map(*~" ").join.chop;
-    my constant $ric = (
+    our constant $alpha = ("a" .. "z").map(*~" ").join.chop;
+    our constant $ric = (
       "REGIONAL INDICATOR SYMBOL LETTER A".uniparse
       ..
       "REGIONAL INDICATOR SYMBOL LETTER Z".uniparse
@@ -22,7 +22,7 @@ module Text::Flags:ver<0.0.1>:auth<cpan:ELIZABETH> {
     }
 
     # supported countries by Regional Indicator symbols
-    my constant %ric =
+    our constant %ric is export =
       ac  => 'Ascension Island',
       ad  => 'Andorra',
       ae  => 'United Arab Emirates',
@@ -284,7 +284,7 @@ module Text::Flags:ver<0.0.1>:auth<cpan:ELIZABETH> {
     ;
 
     # supported flag mapping
-    my constant %flags is export = do {
+    our constant %flags is export = do {
 
         # special cases
         my %hash =
@@ -326,7 +326,7 @@ module Text::Flags:ver<0.0.1>:auth<cpan:ELIZABETH> {
     }
 
     # supported regions with their names
-    my constant %regions is export = do {
+    our constant %regions is export = do {
 
         # standard countries + special cases
         my %hash = %ric,
