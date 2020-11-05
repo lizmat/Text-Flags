@@ -1,4 +1,4 @@
-module Text::Flags:ver<0.0.1>:auth<cpan:ELIZABETH> {
+module Text::Flags:ver<0.0.2>:auth<cpan:ELIZABETH> {
 
     # Because we have auto-combining on regional indicator codepoints,
     # we need to separate them to get the codes by themselves, so we

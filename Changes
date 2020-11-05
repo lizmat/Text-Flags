@@ -2,5 +2,9 @@ Revision history for Text-Flags
 
 {{$NEXT}}
 
+0.0.2  2020-11-05T18:25:36+01:00
+    - Fix breakage on versions that don't have Unicode 13.1 yet
+    - Add list of supported flags to documentation
+
 0.0.1  2020-11-05T13:21:50+01:00
     - Initial version
