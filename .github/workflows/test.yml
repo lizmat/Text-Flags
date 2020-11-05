@@ -24,7 +24,5 @@ jobs:
       - uses: Raku/setup-raku@v1
         with:
           raku-version: ${{ matrix.raku-version }}
-      - name: Install Dependencies
-        run: zef --/test install .
       - name: Run Tests
-        run: raku t/01-basic.t
+        run: raku -Ilib t/01-basic.t

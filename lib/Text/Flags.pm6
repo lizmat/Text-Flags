@@ -3,8 +3,8 @@ module Text::Flags:ver<0.0.1>:auth<cpan:ELIZABETH> {
     # Because we have auto-combining on regional indicator codepoints,
     # we need to separate them to get the codes by themselves, so we
     # put a space inbetween each of them to create consistent mapping.
-    our constant $alpha = ("a" .. "z").map(*~" ").join.chop;
-    our constant $ric = (
+    my constant $alpha = ("a" .. "z").map(*~" ").join.chop;
+    my constant $ric = (
       "REGIONAL INDICATOR SYMBOL LETTER A".uniparse
       ..
       "REGIONAL INDICATOR SYMBOL LETTER Z".uniparse
@@ -22,7 +22,7 @@ module Text::Flags:ver<0.0.1>:auth<cpan:ELIZABETH> {
     }
 
     # supported countries by Regional Indicator symbols
-    our constant %ric is export =
+    my constant %ric =
       ac  => 'Ascension Island',
       ad  => 'Andorra',
       ae  => 'United Arab Emirates',
@@ -284,7 +284,7 @@ module Text::Flags:ver<0.0.1>:auth<cpan:ELIZABETH> {
     ;
 
     # supported flag mapping
-    our constant %flags is export = do {
+    my constant %flags is export = do {
 
         # special cases
         my %hash =
@@ -322,11 +322,11 @@ module Text::Flags:ver<0.0.1>:auth<cpan:ELIZABETH> {
         %hash{$_} = ric($_) for %ric.keys;
 
         # make sure it's immutable
-        %hash.Map does LowerCaseKey
+        %hash.Map # does LowerCaseKey
     }
 
     # supported regions with their names
-    our constant %regions is export = do {
+    my constant %regions is export = do {
 
         # standard countries + special cases
         my %hash = %ric,
@@ -337,7 +337,7 @@ module Text::Flags:ver<0.0.1>:auth<cpan:ELIZABETH> {
         ;
 
         # make sure it's immutable
-        %hash.Map does LowerCaseKey
+        %hash.Map # does LowerCaseKey
     }
 }
 

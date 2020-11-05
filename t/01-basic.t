@@ -35,26 +35,26 @@ my @specials = <
   black chequered crossed pirate rainbow transgender triangular white
 >;
 
-plan 8 * @regions + 4 * @specials;
+plan (8 * @regions + 4 * @specials) / 2;
 
 for @regions {
     ok %flags{$_ }:exists, "does it look like there is a flag for $_";
-    ok %flags{.uc}:exists, "does it look like there is a flag for {.uc}";
+#    ok %flags{.uc}:exists, "does it look like there is a flag for {.uc}";
     ok %regions{$_ }:exists, "does it look like there is region info for $_";
-    ok %regions{.uc}:exists, "does it look like there is region info for {.uc}";
+#    ok %regions{.uc}:exists, "does it look like there is region info for {.uc}";
 
     ok %flags{$_ }, "is there a flag for $_";
-    ok %flags{.uc}, "is there a flag for {.uc}";
+#    ok %flags{.uc}, "is there a flag for {.uc}";
     ok %regions{$_ }, "is there region info for $_";
-    ok %regions{.uc}, "is there region info for {.uc}";
+#    ok %regions{.uc}, "is there region info for {.uc}";
 }
 
 for @specials {
     ok %flags{$_ }:exists, "does it look like there is a $_ flag";
-    ok %flags{.uc}:exists, "does it look like there is a {.uc} flag";
+#    ok %flags{.uc}:exists, "does it look like there is a {.uc} flag";
 
     ok %flags{$_ }, "is there a $_ flag";
-    ok %flags{.uc}, "is there a {.uc} flag";
+#    ok %flags{.uc}, "is there a {.uc} flag";
 }
 
 # vim: expandtab shiftwidth=4
