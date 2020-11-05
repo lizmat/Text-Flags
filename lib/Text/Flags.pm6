@@ -322,7 +322,7 @@ module Text::Flags:ver<0.0.1>:auth<cpan:ELIZABETH> {
         %hash{$_} = ric($_) for %ric.keys;
 
         # make sure it's immutable
-        %hash.Map # does LowerCaseKey
+        %hash.Map does LowerCaseKey
     }
 
     # supported regions with their names
@@ -337,7 +337,7 @@ module Text::Flags:ver<0.0.1>:auth<cpan:ELIZABETH> {
         ;
 
         # make sure it's immutable
-        %hash.Map # does LowerCaseKey
+        %hash.Map does LowerCaseKey
     }
 }
 
