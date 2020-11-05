@@ -307,6 +307,8 @@ module Text::Flags:ver<0.0.1>:auth<cpan:ELIZABETH> {
                           TAG LATIN SMALL LETTER U, TAG LATIN SMALL LETTER S,
                           TAG LATIN SMALL LETTER T, TAG LATIN SMALL LETTER X,
                           CANCEL TAG".uniparse,
+          transgender => "\x1f3f3\xfe0f\x200d\x26a7\xfe0f",
+# Needs unicode 13.1 to work
 #          transgender => "WAVING WHITE FLAG, VARIATION SELECTOR-16,
 #                          ZERO WIDTH JOINER, TRANSGENDER SYMBOL,
 #                          VARIATION SELECTOR-16".uniparse,
