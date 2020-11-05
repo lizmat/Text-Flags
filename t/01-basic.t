@@ -28,12 +28,12 @@ my @regions = <
   ye yt
   za zm zw
 
-  england scotland texas wales
 >;
+#  england scotland texas wales
 
-my @specials = <
-  black chequered crossed pirate rainbow transgender triangular white
+my @specials  = <
 >;
+#  black chequered crossed pirate rainbow transgender triangular white
 
 plan 8 * @regions + 4 * @specials;
 
