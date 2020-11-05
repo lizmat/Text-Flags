@@ -1,0 +1,25 @@
+{
+  "auth": "cpan:ELIZABETH",
+  "authors": [
+    "Elizabeth Mattijsen"
+  ],
+  "build-depends": [
+  ],
+  "depends": [
+  ],
+  "description": "easy interface to Unicode flags",
+  "license": "Artistic-2.0",
+  "name": "Text::Flags",
+  "perl": "6.d",
+  "provides": {
+    "Text::Flags": "lib/Text/Flags.pm6"
+  },
+  "resources": [
+  ],
+  "source-url": "",
+  "tags": [
+  ],
+  "test-depends": [
+  ],
+  "version": "0.0.1"
+}
