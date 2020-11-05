@@ -25,4 +25,4 @@ jobs:
         with:
           raku-version: ${{ matrix.raku-version }}
       - name: Run Tests
-        run: raku -Ilib t/01basic.t
+        run: raku -Ilib t/01-basic.t
