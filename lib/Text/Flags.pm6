@@ -1,3 +1,5 @@
+use v6.*;
+
 module Text::Flags:ver<0.0.2>:auth<cpan:ELIZABETH> {
 
     # Because we have auto-combining on regional indicator codepoints,
