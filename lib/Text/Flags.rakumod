@@ -1,6 +1,6 @@
 use v6.*;
 
-module Text::Flags:ver<0.0.2>:auth<cpan:ELIZABETH> {
+module Text::Flags:ver<0.0.3>:auth<zef:lizmat> {
 
     # Because we have auto-combining on regional indicator codepoints,
     # we need to separate them to get the codes by themselves, so we
@@ -451,14 +451,14 @@ outside of this module.
 
 =head1 AUTHOR
 
-Elizabeth Mattijsen <liz@wenzperl.nl>
+Elizabeth Mattijsen <liz@raku.rocks>
 
 Source can be located at: https://github.com/lizmat/Text-Flags . Comments and
 Pull Requests are welcome.
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2020 Elizabeth Mattijsen
+Copyright 2020, 2021 Elizabeth Mattijsen
 
 This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
 

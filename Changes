@@ -2,6 +2,12 @@ Revision history for Text-Flags
 
 {{$NEXT}}
 
+0.0.3  2021-09-08T14:17:29+02:00
+    - Change file extension to .rakumod
+    - Migrate to zef ecosystem
+    - Update email address
+    - Update copyright year
+
 0.0.2  2020-11-05T18:25:36+01:00
     - Fix breakage on versions that don't have Unicode 13.1 yet
     - Add list of supported flags to documentation
