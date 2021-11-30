@@ -2,6 +2,9 @@ Revision history for Text-Flags
 
 {{$NEXT}}
 
+0.0.5  2021-11-30T12:45:59+01:00
+    - Add command line script "tf" for easier access
+
 0.0.4  2021-11-07T12:19:56+01:00
     - Remove module statement, we don't need it anymore
 

@@ -1,0 +1,20 @@
+use Text::Flags:ver<0.0.5>:auth<zef:lizmat>;
+my %*SUB-MAIN-OPTS = :named-anywhere;
+
+multi sub MAIN(*@flags, Bool :$verbose) {
+    for @flags -> $flag {
+        with %flags{$flag} -> $found {
+            say $verbose
+              ?? "$found  {%regions{$flag} // $flag}"
+              !! $found
+        }
+    }
+}
+
+multi sub MAIN(Bool :$list!, Bool :$verbose) {
+    for %flags.sort(*.key) -> (:key($id), :value($flag)) {
+        say $verbose
+          ?? "$flag  {%regions{$id} // $id}{" ($id.uc())" with %regions{$id}}"
+          !! $flag
+    }
+}

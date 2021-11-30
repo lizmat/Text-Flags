@@ -19,6 +19,8 @@ DESCRIPTION
 
 Text::Flags is an easy interface to the Unicode codepoints that render as flags, and their associated regions and names.
 
+It also contains a command-line interface `tf` that either takes any number of fag identifiers (e.g. `tf chequered` will show 🏁). This also takes an optional `--list` argument to show all supported flags, and a `--verbose` argument to show additional information about the indicated flag(s).
+
 EXPORTED HASHES
 ===============
 

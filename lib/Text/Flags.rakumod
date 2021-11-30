@@ -338,7 +338,7 @@ my constant %regions is export = do {
 
     # make sure it's immutable
     %hash.Map does LowerCaseKey
-    }
+}
 
 =begin pod
 
@@ -360,6 +360,11 @@ say "This is the flag of %regions<NL>: %flags<NL>"
 
 Text::Flags is an easy interface to the Unicode codepoints that render as
 flags, and their associated regions and names.
+
+It also contains a command-line interface C<tf> that either takes any number
+of fag identifiers (e.g. C<tf chequered> will show 🏁).  This also takes an
+optional C<--list> argument to show all supported flags, and a C<--verbose>
+argument to show additional information about the indicated flag(s).
 
 =head1 EXPORTED HASHES
 
