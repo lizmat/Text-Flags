@@ -1,6 +1,11 @@
 Revision history for Text-Flags
 
 {{$NEXT}}
+    - Add support for deprecated regions
+    - Add sponsor button and sponsor link
+    - Modernized test file extension
+    - Add CI badge for each OS
+    - Update copyright year
 
 0.0.5  2021-11-30T12:45:59+01:00
     - Add command line script "tf" for easier access

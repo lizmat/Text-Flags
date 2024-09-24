@@ -29,14 +29,20 @@ my @regions = <
   ye yt
   za zm zw
 
-  england scotland texas wales
+  england scotland wales
+
+  california texas
 >;
 
 my @specials  = <
   black chequered crossed pirate rainbow transgender triangular white
 >;
 
-plan 8 * @regions + 4 * @specials;
+my @deprecated = <
+  an bu cs dd fx nt qu su tp yd yu zr
+>;
+
+plan 10 * @regions + 4 * @specials + 2 * @deprecated;
 
 for @regions {
     ok %flags{$_ }:exists, "does it look like there is a flag for $_";
@@ -45,7 +51,10 @@ for @regions {
     ok %regions{.uc}:exists, "does it look like there is region info for {.uc}";
 
     ok %flags{$_ }, "is there a flag for $_";
+    is %flags{$_}.chars, 1, "is $_ a single codepoint";
     ok %flags{.uc}, "is there a flag for {.uc}";
+    is %flags{.uc}.chars, 1, "is {.uc} a single codepoint";
+
     ok %regions{$_ }, "is there region info for $_";
     ok %regions{.uc}, "is there region info for {.uc}";
 }
@@ -56,6 +65,11 @@ for @specials {
 
     ok %flags{$_ }, "is there a $_ flag";
     ok %flags{.uc}, "is there a {.uc} flag";
+}
+
+for @deprecated {
+    ok %deprecated{$_ }, "is there region info for $_";
+    ok %deprecated{.uc}, "is there region info for {.uc}";
 }
 
 # vim: expandtab shiftwidth=4

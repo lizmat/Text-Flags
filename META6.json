@@ -16,8 +16,10 @@
   },
   "resources": [
   ],
-  "source-url": "ssh://github.com/lizmat/Text-Flags.git",
+  "source-url": "https://github.com/lizmat/Text-Flags.git",
   "tags": [
+    "UNICODE",
+    "FLAG"
   ],
   "test-depends": [
   ],

@@ -281,41 +281,50 @@ my constant %ric =
   zw  => 'Zimbabwe',
 ;
 
+# helper sub for creating regional flags
+my sub regional($country, $region) {
+    my str @parts = "WAVING BLACK FLAG";
+    @parts.push("TAG LATIN SMALL LETTER $_") for $country.comb;
+    @parts.push("TAG LATIN SMALL LETTER $_") for $region.comb;
+    @parts.push("CANCEL TAG");
+    @parts.join(", ").uniparse
+}
+
 # supported flag mapping
 my constant %flags is export = do {
 
     # special cases
     my %hash =
       black       => "WAVING BLACK FLAG".uniparse,
+      california  => regional("US","CA"),
       chequered   => "CHEQUERED FLAG".uniparse,
       crossed     => "CROSSED FLAGS".uniparse,
-      england     => "WAVING BLACK FLAG,
-                      TAG LATIN SMALL LETTER G, TAG LATIN SMALL LETTER B,
-                      TAG LATIN SMALL LETTER E, TAG LATIN SMALL LETTER N,
-                      TAG LATIN SMALL LETTER G, CANCEL TAG".uniparse,
+      england     => regional("GB","ENG"),
       pirate      => "WAVING BLACK FLAG, ZERO WIDTH JOINER,
                       SKULL AND CROSSBONES, VARIATION SELECTOR-16".uniparse,
       rainbow     => "WAVING WHITE FLAG, VARIATION SELECTOR-16,
                       ZERO WIDTH JOINER, RAINBOW".uniparse,
-      scotland    => "WAVING BLACK FLAG,
-                      TAG LATIN SMALL LETTER G, TAG LATIN SMALL LETTER B,
-                      TAG LATIN SMALL LETTER S, TAG LATIN SMALL LETTER C,
-                      TAG LATIN SMALL LETTER T, CANCEL TAG".uniparse,
-      texas       => "WAVING BLACK FLAG,
-                      TAG LATIN SMALL LETTER U, TAG LATIN SMALL LETTER S,
-                      TAG LATIN SMALL LETTER T, TAG LATIN SMALL LETTER X,
-                      CANCEL TAG".uniparse,
-      transgender => "\x1f3f3\xfe0f\x200d\x26a7\xfe0f",
-# Needs unicode 13.1 to work
-#          transgender => "WAVING WHITE FLAG, VARIATION SELECTOR-16,
-#                          ZERO WIDTH JOINER, TRANSGENDER SYMBOL,
-#                          VARIATION SELECTOR-16".uniparse,
+      scotland    => regional("GB","SCT"),
+      texas       => regional("US","TX"),
+      transgender => "WAVING WHITE FLAG, VARIATION SELECTOR-16,
+                      ZERO WIDTH JOINER, TRANSGENDER SYMBOL,
+                      VARIATION SELECTOR-16".uniparse,
       triangular  => "TRIANGULAR FLAG ON POST".uniparse,
-      wales       => "WAVING BLACK FLAG, TAG LATIN SMALL LETTER G,
-                      TAG LATIN SMALL LETTER B, TAG LATIN SMALL LETTER W,
-                      TAG LATIN SMALL LETTER L, TAG LATIN SMALL LETTER S,
-                      CANCEL TAG".uniparse,
+      wales       => regional("GB","WLS"),
       white       => "WAVING WHITE FLAG".uniparse,
+
+      an => ric(any(<cw sx bq>)),
+      bu => ric("mm"),
+      cs => ric(any(<rs me>)),
+      dd => ric("de"),
+      fx => ric("fr"),
+      nt => ric(any(<sa iq>)),
+      qu => ric("eu"),
+      su => ric(any(<am az by ee ge kz kg lv lt md ru tj tm ua uz>)),
+      tp => ric("tl"),
+      yd => ric("ye"),
+      yu => ric(any(<rs me>)),
+      zr => ric("cd"),
     ;
 
     # add all the countries
@@ -330,10 +339,32 @@ my constant %regions is export = do {
 
     # standard countries + special cases
     my %hash = %ric,
-      england  => 'England',
-      scotland => 'Scotland',
-      texas    => 'Texas',
-      wales    => 'Wales',
+      california => 'California',
+      england    => 'England',
+      scotland   => 'Scotland',
+      texas      => 'Texas',
+      wales      => 'Wales',
+    ;
+
+    # make sure it's immutable
+    %hash.Map does LowerCaseKey
+}
+
+# deprecated regions with their names
+my constant %deprecated is export = do {
+    my %hash =
+      an => 'Netherlands Antilles',
+      bu => 'Burma',
+      cs => 'Serbia and Montenegro',
+      dd => 'German Democratic Republic',
+      fx => 'Metropolitan France',
+      nt => 'Neutral Zone',
+      qu => 'European Union',
+      su => 'Union of Soviet Socialist Republics',
+      tp => 'East Timor',
+      yd => 'Democratic Yemen',
+      yu => 'Yugoslavia',
+      zr => 'Zaire',
     ;
 
     # make sure it's immutable
@@ -358,11 +389,11 @@ say "This is the flag of %regions<NL>: %flags<NL>"
 
 =head1 DESCRIPTION
 
-Text::Flags is an easy interface to the Unicode codepoints that render as
-flags, and their associated regions and names.
+Text::Flags provides an easy interface to the Unicode codepoints that render
+as flags, and their associated regions and names.
 
 It also contains a command-line interface C<tf> that either takes any number
-of fag identifiers (e.g. C<tf chequered> will show 🏁).  This also takes an
+of flag identifiers (e.g. C<tf chequered> will show 🏁).  This also takes an
 optional C<--list> argument to show all supported flags, and a C<--verbose>
 argument to show additional information about the indicated flag(s).
 
@@ -379,11 +410,14 @@ say %flags<chequered>;   # 🏁
 The C<%flags> hash contains the mapping of country / region codes and some
 special flags, to their associated Unicode representations.  Please note that
 some flags, or possibly all flags,  may not render correctly on your platform,
-even if they are valid Unicode representations.  Keys can be specified in either
-uppercase or lowercase.
+even if they are valid Unicode representations.  Keys can be specified in
+either uppercase or lowercase.
 
 You can use the C<.keys> method to find out which flags are supported.  Please
 note that only lowercase keys will be returned.
+
+Note that flags of deprecated countries / regions B<may> consist of a
+junction of possible renderings.
 
 =head2 %regions
 
@@ -396,8 +430,23 @@ say %regions<NL>;   # The Netherlands
 The C<%regions> hash contains the mapping of country / region codes to their
 associated name.  Keys can be specified in either uppercase or lowercase.
 
-You can use the C<.keys> method to find out which regions are supported.  Please
-note that only lowercase keys will be returned.
+You can use the C<.keys> method to find out which regions are supported.
+Please note that only lowercase keys will be returned.
+
+=head2 %deprecated
+
+=begin code :lang<raku>
+
+say %deprecated<BU>;   # Burma
+
+=end code
+
+The C<%deprecated> hash contains the mapping of deprecated country / region
+codes to their associated name.  Keys can be specified in either uppercase
+or lowercase.
+
+You can use the C<.keys> method to find out which deprecations are known.
+Please note that only lowercase keys will be returned.
 
 =head1 EXPORTED SUBROUTINES
 
@@ -445,7 +494,11 @@ outside of this module.
   ye yt
   za zm zw
 
-  england scotland texas wales
+  an bu cs dd fx nt qu su tp yd yu zr
+
+  england scotland wales
+
+  california texas
 
   black chequered crossed pirate rainbow transgender triangular white
 
@@ -456,9 +509,13 @@ Elizabeth Mattijsen <liz@raku.rocks>
 Source can be located at: https://github.com/lizmat/Text-Flags . Comments and
 Pull Requests are welcome.
 
+If you like this module, or what I'm doing more generally, committing to a
+L<small sponsorship|https://github.com/sponsors/lizmat/>  would mean a great
+deal to me!
+
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2020, 2021 Elizabeth Mattijsen
+Copyright 2020, 2021, 2024 Elizabeth Mattijsen
 
 This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
 

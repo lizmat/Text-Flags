@@ -1,4 +1,4 @@
-[![Actions Status](https://github.com/lizmat/Text-Flags/workflows/test/badge.svg)](https://github.com/lizmat/Text-Flags/actions)
+[![Actions Status](https://github.com/lizmat/Text-Flags/actions/workflows/linux.yml/badge.svg)](https://github.com/lizmat/Text-Flags/actions) [![Actions Status](https://github.com/lizmat/Text-Flags/actions/workflows/macos.yml/badge.svg)](https://github.com/lizmat/Text-Flags/actions) [![Actions Status](https://github.com/lizmat/Text-Flags/actions/workflows/windows.yml/badge.svg)](https://github.com/lizmat/Text-Flags/actions)
 
 NAME
 ====
@@ -17,9 +17,9 @@ say "This is the flag of %regions<NL>: %flags<NL>"
 DESCRIPTION
 ===========
 
-Text::Flags is an easy interface to the Unicode codepoints that render as flags, and their associated regions and names.
+Text::Flags provides an easy interface to the Unicode codepoints that render as flags, and their associated regions and names.
 
-It also contains a command-line interface `tf` that either takes any number of fag identifiers (e.g. `tf chequered` will show 🏁). This also takes an optional `--list` argument to show all supported flags, and a `--verbose` argument to show additional information about the indicated flag(s).
+It also contains a command-line interface `tf` that either takes any number of flag identifiers (e.g. `tf chequered` will show 🏁). This also takes an optional `--list` argument to show all supported flags, and a `--verbose` argument to show additional information about the indicated flag(s).
 
 EXPORTED HASHES
 ===============
@@ -45,6 +45,17 @@ say %regions<NL>;   # The Netherlands
 The `%regions` hash contains the mapping of country / region codes to their associated name. Keys can be specified in either uppercase or lowercase.
 
 You can use the `.keys` method to find out which regions are supported. Please note that only lowercase keys will be returned.
+
+%deprecated
+-----------
+
+```raku
+say %deprecated<BU>;   # Burma
+```
+
+The `%deprecated` hash contains the mapping of deprecated country / region codes to their associated name. Keys can be specified in either uppercase or lowercase.
+
+You can use the `.keys` method to find out which deprecations are known. Please note that only lowercase keys will be returned.
 
 EXPORTED SUBROUTINES
 ====================
@@ -89,7 +100,9 @@ SUPPORTED FLAGS
     ye yt
     za zm zw
 
-    england scotland texas wales
+    england scotland wales
+
+    california texas
 
     black chequered crossed pirate rainbow transgender triangular white
 
@@ -100,10 +113,12 @@ Elizabeth Mattijsen <liz@raku.rocks>
 
 Source can be located at: https://github.com/lizmat/Text-Flags . Comments and Pull Requests are welcome.
 
+If you like this module, or what I'm doing more generally, committing to a [small sponsorship](https://github.com/sponsors/lizmat/) would mean a great deal to me!
+
 COPYRIGHT AND LICENSE
 =====================
 
-Copyright 2020, 2021 Elizabeth Mattijsen
+Copyright 2020, 2021, 2024 Elizabeth Mattijsen
 
 This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
 
