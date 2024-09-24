@@ -35,6 +35,8 @@ The `%flags` hash contains the mapping of country / region codes and some specia
 
 You can use the `.keys` method to find out which flags are supported. Please note that only lowercase keys will be returned.
 
+Note that flags of deprecated countries / regions **may** consist of a junction of possible renderings.
+
 %regions
 --------
 
@@ -99,6 +101,8 @@ SUPPORTED FLAGS
     wf ws xk
     ye yt
     za zm zw
+
+    an bu cs dd fx nt qu su tp yd yu zr
 
     england scotland wales
 
