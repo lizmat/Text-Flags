@@ -1,3 +1,4 @@
 .precomp/
 /Text-Flags-*
 /releases/
+*.rakucov
